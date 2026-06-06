@@ -76,7 +76,6 @@ public class StudentFrame extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
-        jPanel1.setMaximumSize(new java.awt.Dimension(720, 402));
         jPanel1.setPreferredSize(new java.awt.Dimension(740, 402));
 
         Header.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
@@ -104,10 +103,13 @@ public class StudentFrame extends javax.swing.JFrame {
         AddButton.addActionListener(this::AddButtonActionPerformed);
 
         UpdateButton.setText("Update");
+        UpdateButton.addActionListener(this::UpdateButtonActionPerformed);
 
         DeleteButton.setText("Delete");
+        DeleteButton.addActionListener(this::DeleteButtonActionPerformed);
 
         SearchButton.setText("Search");
+        SearchButton.addActionListener(this::SearchButtonActionPerformed);
 
         ClearButton.setText("Clear");
         ClearButton.setMaximumSize(new java.awt.Dimension(172, 23));
@@ -260,6 +262,7 @@ public class StudentFrame extends javax.swing.JFrame {
         SID.setText("");
         Name.setText("");
         Age.setText("");
+        RefreshTable();
     }//GEN-LAST:event_ClearButtonActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
@@ -267,6 +270,107 @@ public class StudentFrame extends javax.swing.JFrame {
         mainMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        try{
+            if(SID.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Please fill all required fields (Student ID)");
+                return;
+            }
+            
+           Class.forName("com.mysql.cj.jdbc.Driver");
+           String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
+           Connection connect = DriverManager.getConnection(database);
+           
+           Statement state = connect.createStatement();
+           String query = "DELETE FROM Student WHERE ID='%s'";
+           query = String.format(query, SID.getText());
+           
+           state.execute(query);
+           
+           state.close();
+           connect.close();
+           
+           JOptionPane.showMessageDialog(null, "Student deleted sucessfully");
+           RefreshTable();
+            
+        } catch (Exception e){
+            e.getStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_DeleteButtonActionPerformed
+
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+        try{
+            if(SID.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Student ID)");
+                return;
+            }
+            
+           Class.forName("com.mysql.cj.jdbc.Driver");
+           String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
+           Connection connect = DriverManager.getConnection(database);
+           
+           Statement state = connect.createStatement();
+           String query = "SELECT * FROM Student WHERE ID='%s'";
+           query = String.format(query,SID.getText());
+           
+           ResultSet result = state.executeQuery(query);
+           if(result.next()){
+               SID.setText(result.getString("ID"));
+               Name.setText(result.getString("Name"));
+               Age.setText(result.getString("Age"));
+               JOptionPane.showMessageDialog(null, "Student found.");
+            } else {
+               JOptionPane.showMessageDialog(null,"No student found with this ID!");
+           }
+           
+           state.close();
+           connect.close();
+            
+        } catch (Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Student could not be searched!");
+        }
+    }//GEN-LAST:event_SearchButtonActionPerformed
+
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
+        try {
+            if (SID.getText().isEmpty() || Name.getText().isEmpty() || Age.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill all required fields! (ID, Name, Age)");
+                return;
+            }
+
+            Integer.parseInt(Age.getText());
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
+            Connection connect = DriverManager.getConnection(database);
+
+            Statement state = connect.createStatement();
+
+            String query = "UPDATE Student SET Name='%s', Age='%s' WHERE ID='%s'";
+            query = String.format(query, Name.getText(), Age.getText(), SID.getText());
+
+            int updatedRows = state.executeUpdate(query);
+
+            state.close();
+            connect.close();
+
+            if (updatedRows > 0) {
+                JOptionPane.showMessageDialog(null, "Student updated successfully.");
+                RefreshTable();
+            } else {
+                JOptionPane.showMessageDialog(null, "No student found with this ID.");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Age must be a number!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Student could not be updated.");
+        }
+    }//GEN-LAST:event_UpdateButtonActionPerformed
 
     /**
      * @param args the command line arguments
