@@ -73,6 +73,6 @@ Grades
 
 ## Author
 
-Uğur Ege Çelik
-Middle East Technical University Northern Cyprus Campus
-Software Engineering
+- Uğur Ege Çelik
+- Middle East Technical University Northern Cyprus Campus
+- Software Engineering
