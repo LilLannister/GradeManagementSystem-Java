@@ -18,6 +18,7 @@ public class SNG341GradeManagementSystem {
         StudentFrame F2 = new StudentFrame();
         TeacherFrame F3 = new TeacherFrame();
         CourseFrame F4 = new CourseFrame();
+        GradesFrame F5 = new GradesFrame();
         F1.setVisible(true);
     }
     
