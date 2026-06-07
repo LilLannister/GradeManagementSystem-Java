@@ -53,7 +53,7 @@ public class StudentFrame extends javax.swing.JFrame {
         SearchButton = new javax.swing.JButton();
         ClearButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Table1 = new javax.swing.JTable();
+        Table2 = new javax.swing.JTable();
         BackButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -117,9 +117,9 @@ public class StudentFrame extends javax.swing.JFrame {
         ClearButton.setSize(new java.awt.Dimension(170, 23));
         ClearButton.addActionListener(this::ClearButtonActionPerformed);
 
-        Table1.setBackground(javax.swing.UIManager.getDefaults().getColor("MenuItem.underlineSelectionBackground"));
-        Table1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Table1.setModel(new javax.swing.table.DefaultTableModel(
+        Table2.setBackground(javax.swing.UIManager.getDefaults().getColor("MenuItem.underlineSelectionBackground"));
+        Table2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -131,8 +131,8 @@ public class StudentFrame extends javax.swing.JFrame {
                 "ID", "Name", "Age"
             }
         ));
-        Table1.setGridColor(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(Table1);
+        Table2.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(Table2);
 
         BackButton.setText("Back");
         BackButton.addActionListener(this::BackButtonActionPerformed);
@@ -149,7 +149,6 @@ public class StudentFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BackButton)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -158,20 +157,21 @@ public class StudentFrame extends javax.swing.JFrame {
                                     .addComponent(AgeLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(SID)
                                     .addComponent(Name)
-                                    .addComponent(Age, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Age, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                    .addComponent(SID))
                                 .addGap(56, 56, 56)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(SearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,8 +183,8 @@ public class StudentFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SIDLabel)
                     .addComponent(SID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddButton)
-                    .addComponent(UpdateButton))
+                    .addComponent(UpdateButton)
+                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameLabel)
@@ -337,7 +337,7 @@ public class StudentFrame extends javax.swing.JFrame {
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         try {
             if (SID.getText().isEmpty() || Name.getText().isEmpty() || Age.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill all required fields! (ID, Name, Age)");
+                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Student ID, Name, Age)");
                 return;
             }
 
@@ -410,7 +410,7 @@ public class StudentFrame extends javax.swing.JFrame {
     private javax.swing.JTextField SID;
     private javax.swing.JLabel SIDLabel;
     private javax.swing.JButton SearchButton;
-    private javax.swing.JTable Table1;
+    private javax.swing.JTable Table2;
     private javax.swing.JButton UpdateButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -428,7 +428,7 @@ public class StudentFrame extends javax.swing.JFrame {
            String query = "SELECT * FROM Student";
            ResultSet result = state.executeQuery(query);
            
-           DefaultTableModel dm = (DefaultTableModel) Table1.getModel();
+           DefaultTableModel dm = (DefaultTableModel) Table2.getModel();
            
            int rowCount = dm.getRowCount();
            for(int i = rowCount-1; i>=0; i--){
