@@ -77,6 +77,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
         Gradesutton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         Gradesutton.setText("Grades");
         Gradesutton.setPreferredSize(new java.awt.Dimension(150, 50));
+        Gradesutton.addActionListener(this::GradesuttonActionPerformed);
 
         CoursesButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         CoursesButton.setText("Courses");
@@ -237,7 +238,9 @@ public class MainMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CoursesMenuItemActionPerformed
 
     private void GradesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GradesMenuItemActionPerformed
-        // TODO add your handling code here:
+        GradesFrame gradesFrame = new GradesFrame();
+        gradesFrame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_GradesMenuItemActionPerformed
 
     private void CourseWithMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseWithMenuItemActionPerformed
@@ -255,6 +258,12 @@ public class MainMenuFrame extends javax.swing.JFrame {
         courseFrame.setVisible(true);
         dispose();
     }//GEN-LAST:event_CoursesButtonActionPerformed
+
+    private void GradesuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GradesuttonActionPerformed
+        GradesFrame gradesFrame = new GradesFrame();
+        gradesFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_GradesuttonActionPerformed
 
     /**
      * @param args the command line arguments
