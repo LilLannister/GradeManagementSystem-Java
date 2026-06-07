@@ -1,4 +1,5 @@
 package sng341.grademanagementsystem;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -37,6 +38,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
         CoursesButton = new javax.swing.JButton();
         ReportsButton = new javax.swing.JButton();
         ExitButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
         FileMenuItem = new javax.swing.JMenu();
         ExitMenuItem = new javax.swing.JMenuItem();
@@ -87,10 +89,15 @@ public class MainMenuFrame extends javax.swing.JFrame {
         ReportsButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         ReportsButton.setText("Reports");
         ReportsButton.setPreferredSize(new java.awt.Dimension(150, 50));
+        ReportsButton.addActionListener(this::ReportsButtonActionPerformed);
 
         ExitButton.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
         ExitButton.setText("Exit");
         ExitButton.setPreferredSize(new java.awt.Dimension(50, 15));
+        ExitButton.addActionListener(this::ExitButtonActionPerformed);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel1.setText("Select to manage or create report:");
 
         javax.swing.GroupLayout Panel1Layout = new javax.swing.GroupLayout(Panel1);
         Panel1.setLayout(Panel1Layout);
@@ -115,7 +122,10 @@ public class MainMenuFrame extends javax.swing.JFrame {
                                     .addComponent(Gradesutton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(332, 332, 332)
-                        .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Panel1Layout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(jLabel1)))
                 .addContainerGap(201, Short.MAX_VALUE))
         );
         Panel1Layout.setVerticalGroup(
@@ -123,6 +133,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
             .addGroup(Panel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(Label1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TeachersButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,7 +145,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
                     .addComponent(Gradesutton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ReportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -169,9 +181,11 @@ public class MainMenuFrame extends javax.swing.JFrame {
         ReportsMenuItem.setText("Reports");
 
         SearchMenuItem.setText("Search Student Grade");
+        SearchMenuItem.addActionListener(this::SearchMenuItemActionPerformed);
         ReportsMenuItem.add(SearchMenuItem);
 
         BestMenuItem.setText("Best Student in Course");
+        BestMenuItem.addActionListener(this::BestMenuItemActionPerformed);
         ReportsMenuItem.add(BestMenuItem);
 
         CourseWithMenuItem.setText("Courses With More Than N Students");
@@ -179,16 +193,19 @@ public class MainMenuFrame extends javax.swing.JFrame {
         ReportsMenuItem.add(CourseWithMenuItem);
 
         TeachersWithoutMenuItem.setText("Teachers Without Courses");
+        TeachersWithoutMenuItem.addActionListener(this::TeachersWithoutMenuItemActionPerformed);
         ReportsMenuItem.add(TeachersWithoutMenuItem);
 
         StudentAvgMenuItem.setText("Student Average Grade");
+        StudentAvgMenuItem.addActionListener(this::StudentAvgMenuItemActionPerformed);
         ReportsMenuItem.add(StudentAvgMenuItem);
 
         MenuBar.add(ReportsMenuItem);
 
         AboutMenuItem.setText("Help");
 
-        HelpMenuItem.setText("Help");
+        HelpMenuItem.setText("About");
+        HelpMenuItem.addActionListener(this::HelpMenuItemActionPerformed);
         AboutMenuItem.add(HelpMenuItem);
 
         MenuBar.add(AboutMenuItem);
@@ -216,7 +233,16 @@ public class MainMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_StudentsButtonActionPerformed
 
     private void ExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitMenuItemActionPerformed
-        // TODO add your handling code here:
+        int answer = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit Confirmation",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (answer == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_ExitMenuItemActionPerformed
 
     private void StudentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsMenuItemActionPerformed
@@ -244,7 +270,9 @@ public class MainMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_GradesMenuItemActionPerformed
 
     private void CourseWithMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseWithMenuItemActionPerformed
-       
+        CoursesWithMoreThanNReportFrame frame = new CoursesWithMoreThanNReportFrame();
+        frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_CourseWithMenuItemActionPerformed
 
     private void TeachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeachersButtonActionPerformed
@@ -264,6 +292,61 @@ public class MainMenuFrame extends javax.swing.JFrame {
         gradesFrame.setVisible(true);
         dispose();
     }//GEN-LAST:event_GradesuttonActionPerformed
+
+    private void ReportsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsButtonActionPerformed
+        ReportsFrame reportsFrame = new ReportsFrame();
+        reportsFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ReportsButtonActionPerformed
+
+    private void SearchMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchMenuItemActionPerformed
+        BestStudentReportFrame frame = new BestStudentReportFrame();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_SearchMenuItemActionPerformed
+
+    private void TeachersWithoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeachersWithoutMenuItemActionPerformed
+        TeachersWithoutCoursesReportFrame frame = new TeachersWithoutCoursesReportFrame();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_TeachersWithoutMenuItemActionPerformed
+
+    private void StudentAvgMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentAvgMenuItemActionPerformed
+        StudentAverageGradeFrame frame = new StudentAverageGradeFrame();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_StudentAvgMenuItemActionPerformed
+
+    private void BestMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BestMenuItemActionPerformed
+        BestStudentReportFrame frame = new BestStudentReportFrame();
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BestMenuItemActionPerformed
+
+    private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
+        int answer = JOptionPane.showConfirmDialog(
+                null,
+                "Do you really want to exit?",
+                "Exit Confirmation",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (answer == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_ExitButtonActionPerformed
+
+    private void HelpMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpMenuItemActionPerformed
+        JOptionPane.showMessageDialog(
+                null,
+                "Grade Management System\n"
+                + "SNG341 Software Construction and Evolution\n"
+                + "Developed by: Uğur Ege Çelik - 2587285\n\n"
+                + "This application manages students, teachers, courses, grades and reports.",
+                "About",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }//GEN-LAST:event_HelpMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,5 +398,6 @@ public class MainMenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton TeachersButton;
     private javax.swing.JMenuItem TeachersMenuItem;
     private javax.swing.JMenuItem TeachersWithoutMenuItem;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
