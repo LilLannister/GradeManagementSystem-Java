@@ -15,8 +15,10 @@ public class SNG341GradeManagementSystem {
      */
     public static void main(String[] args) {
         MainMenuFrame F1 = new MainMenuFrame();
-        TeacherFrame F2 = new TeacherFrame();
-        F2.setVisible(true);
+        StudentFrame F2 = new StudentFrame();
+        TeacherFrame F3 = new TeacherFrame();
+        CourseFrame F4 = new CourseFrame();
+        F1.setVisible(true);
     }
     
 }
