@@ -15,14 +15,14 @@ import java.sql.ResultSet;
  *
  * @author uguregecelik
  */
-public class TeacherFrame extends javax.swing.JFrame {
+public class CourseFrame extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TeacherFrame.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CourseFrame.class.getName());
 
     /**
-     * Creates new form TeacherFrame
+     * Creates new form CourseFrame
      */
-    public TeacherFrame() {
+    public CourseFrame() {
         initComponents();
         setLocationRelativeTo(null);
         RefreshTable();
@@ -39,12 +39,12 @@ public class TeacherFrame extends javax.swing.JFrame {
 
         Panel1 = new javax.swing.JPanel();
         Header = new javax.swing.JLabel();
-        TIDLabel = new javax.swing.JLabel();
+        CIDLabel = new javax.swing.JLabel();
         NameLabel = new javax.swing.JLabel();
-        AgeLabel = new javax.swing.JLabel();
-        TID = new javax.swing.JTextField();
+        CreditLabel = new javax.swing.JLabel();
+        CID = new javax.swing.JTextField();
         Name = new javax.swing.JTextField();
-        Age = new javax.swing.JTextField();
+        Credit = new javax.swing.JTextField();
         AddButton = new javax.swing.JButton();
         SearchButton = new javax.swing.JButton();
         DeleteButton = new javax.swing.JButton();
@@ -55,31 +55,28 @@ public class TeacherFrame extends javax.swing.JFrame {
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(720, 402));
 
         Panel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Menu.background"));
         Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
         Header.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        Header.setText("Teacher Management");
+        Header.setText("Course Management");
 
-        TIDLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        TIDLabel.setText("Teacher ID:");
+        CIDLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        CIDLabel.setText("Course ID:");
 
         NameLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         NameLabel.setText("Name:");
 
-        AgeLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        AgeLabel.setText("Age:");
+        CreditLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        CreditLabel.setText("Credit:");
 
-        TID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TID.addActionListener(this::TIDActionPerformed);
+        CID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        CID.addActionListener(this::CIDActionPerformed);
 
         Name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Name.addActionListener(this::NameActionPerformed);
 
-        Age.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Age.addActionListener(this::AgeActionPerformed);
+        Credit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         AddButton.setText("Add");
         AddButton.addActionListener(this::AddButtonActionPerformed);
@@ -107,7 +104,7 @@ public class TeacherFrame extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "ID", "Name", "Age"
+                "ID", "Name", "Credit"
             }
         ));
         Table1.setGridColor(new java.awt.Color(0, 0, 0));
@@ -123,27 +120,27 @@ public class TeacherFrame extends javax.swing.JFrame {
             .addGroup(Panel1Layout.createSequentialGroup()
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel1Layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
+                        .addGap(226, 226, 226)
                         .addComponent(Header))
                     .addGroup(Panel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(117, 117, 117)
                         .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(NameLabel)
-                                    .addComponent(TIDLabel)
-                                    .addComponent(AgeLabel))
+                                    .addComponent(CIDLabel)
+                                    .addComponent(CreditLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Age, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CID, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                    .addComponent(Name)
+                                    .addComponent(Credit))
                                 .addGap(58, 58, 58)
                                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(Panel1Layout.createSequentialGroup()
-                                        .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
@@ -151,43 +148,43 @@ public class TeacherFrame extends javax.swing.JFrame {
                                             .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(SearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addComponent(BackButton))))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         Panel1Layout.setVerticalGroup(
             Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(35, 35, 35)
                 .addComponent(Header)
-                .addGap(18, 18, 18)
-                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AddButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(TIDLabel)
-                        .addComponent(TID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(23, 23, 23)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CIDLabel)
+                    .addComponent(CID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddButton)
+                    .addComponent(SearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NameLabel)
                     .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DeleteButton)
-                    .addComponent(UpdateButton))
+                    .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(DeleteButton)
+                        .addComponent(UpdateButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AgeLabel)
-                    .addComponent(Age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CreditLabel)
+                    .addComponent(Credit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ClearButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BackButton)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,26 +194,18 @@ public class TeacherFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TIDActionPerformed
+    private void CIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TIDActionPerformed
-
-    private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AgeActionPerformed
-
-    private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NameActionPerformed
+    }//GEN-LAST:event_CIDActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         try {
-            if (TID.getText().isEmpty() || Age.getText().isEmpty() || Name.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Teacher ID, Name, Age)");
+            if (CID.getText().isEmpty() || Name.getText().isEmpty() || Credit.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Course ID, Name, Credit)");
                 return;
             }
-
-            Integer.parseInt(Age.getText());
+            
+            Integer.parseInt(Credit.getText());
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
@@ -224,58 +213,24 @@ public class TeacherFrame extends javax.swing.JFrame {
 
             Statement state = connect.createStatement();
 
-            String query = "INSERT INTO Teacher(TeacherID, Name, Age) VALUES('%s', '%s', '%s')";
-            query = String.format(query, TID.getText(), Name.getText(), Age.getText());
+            String query = "INSERT INTO Course(CourseID, Name, Credit) VALUES('%s', '%s', '%s')";
+            query = String.format(query, CID.getText(), Name.getText(), Credit.getText());
 
             state.execute(query);
 
             state.close();
             connect.close();
 
-            JOptionPane.showMessageDialog(null, "Teacher inserted successfully.");
+            JOptionPane.showMessageDialog(null, "Course inserted successfully.");
             RefreshTable();
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Age must be a number!");
+            JOptionPane.showMessageDialog(null, "Credit must be a number!");
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Teacher could not be inserted.");
+            JOptionPane.showMessageDialog(null, "Coruse could not be inserted.");
         }
     }//GEN-LAST:event_AddButtonActionPerformed
-
-    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
-        try{
-            if (TID.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Teacher ID)");
-                return;
-            }
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
-            Connection connect = DriverManager.getConnection(database);
-
-            Statement state = connect.createStatement();
-            String query = "SELECT * FROM Teacher WHERE TeacherID='%s'";
-            query = String.format(query, TID.getText());
-            
-            ResultSet result = state.executeQuery(query);
-            if(result.next()){
-                TID.setText(result.getString("TeacherID"));
-                Name.setText(result.getString("Name"));
-                Age.setText(result.getString("Age"));
-                
-                 JOptionPane.showMessageDialog(null, "Teacher found.");
-            } else {
-               JOptionPane.showMessageDialog(null,"No teacher found with this ID!");
-           }
-            
-           state.close();
-           connect.close();
-           
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Teacher could not be searched!");
-        }
-    }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         MainMenuFrame mainMenu = new MainMenuFrame();
@@ -283,10 +238,44 @@ public class TeacherFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
 
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+        try{
+            if (CID.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Course ID)");
+                return;
+            }
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
+            Connection connect = DriverManager.getConnection(database);
+
+            Statement state = connect.createStatement();
+            String query = "SELECT * FROM Course WHERE CourseID='%s'";
+            query = String.format(query, CID.getText());
+            
+            ResultSet result = state.executeQuery(query);
+            if(result.next()){
+                CID.setText(result.getString("CourseID"));
+                Name.setText(result.getString("Name"));
+                Credit.setText(result.getString("Credit"));
+                
+                 JOptionPane.showMessageDialog(null, "Course found.");
+            } else {
+               JOptionPane.showMessageDialog(null,"No course found with this ID!");
+           }
+            
+           state.close();
+           connect.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Course could not be searched!");
+        }
+    }//GEN-LAST:event_SearchButtonActionPerformed
+
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
         try {
-            if (TID.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Teacher ID)");
+            if (CID.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Course ID)");
                 return;
             }
 
@@ -295,8 +284,8 @@ public class TeacherFrame extends javax.swing.JFrame {
             Connection connect = DriverManager.getConnection(database);
 
             Statement state = connect.createStatement();
-            String query = "DELETE FROM Teacher WHERE TeacherID='%s'";
-            query = String.format(query, TID.getText());
+            String query = "DELETE FROM Course WHERE CourseID='%s'";
+            query = String.format(query, CID.getText());
 
             int deletedRows = state.executeUpdate(query);
 
@@ -304,39 +293,33 @@ public class TeacherFrame extends javax.swing.JFrame {
             connect.close();
             
             if (deletedRows > 0) {
-                JOptionPane.showMessageDialog(null, "Teacher deleted successfully.");
+                JOptionPane.showMessageDialog(null, "Course deleted successfully.");
                 RefreshTable();
             } else {
-                JOptionPane.showMessageDialog(null, "No teacher found with this ID.");
+                JOptionPane.showMessageDialog(null, "No course found with this ID.");
             }
     } catch (Exception e) {
         e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Teacher could not be deleted.");
+        JOptionPane.showMessageDialog(null, "Course could not be deleted.");
     }
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
-    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
-        TID.setText("");
-        Name.setText("");
-        Age.setText("");
-    }//GEN-LAST:event_ClearButtonActionPerformed
-
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         try{
-            if (TID.getText().isEmpty() || Name.getText().isEmpty() || Age.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Teacher ID, Name, Age)");
+            if (CID.getText().isEmpty() || Name.getText().isEmpty() || Credit.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill all required fields! (Course ID, Name, Credit)");
                 return;
             }
 
-            Integer.parseInt(Age.getText());
+            Integer.parseInt(Credit.getText());
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
             Connection connect = DriverManager.getConnection(database);
 
             Statement state = connect.createStatement();
-            String query = "UPDATE Teacher SET Name='%s', Age='%s' WHERE TeacherID='%s'";
-            query = String.format(query, Name.getText(), Age.getText(), TID.getText());
+            String query = "UPDATE Course SET Name='%s', Credit='%s' WHERE CourseID='%s'";
+            query = String.format(query, Name.getText(), Credit.getText(), CID.getText());
 
             int updatedRows = state.executeUpdate(query);
 
@@ -344,19 +327,25 @@ public class TeacherFrame extends javax.swing.JFrame {
             connect.close();
 
             if (updatedRows > 0) {
-                JOptionPane.showMessageDialog(null, "Teacher updated successfully.");
+                JOptionPane.showMessageDialog(null, "Course updated successfully.");
                 RefreshTable();
             } else {
-                JOptionPane.showMessageDialog(null, "No teacher found with this ID.");
+                JOptionPane.showMessageDialog(null, "No course found with this ID.");
             }
             
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Age must be a number!");
+            JOptionPane.showMessageDialog(null, "Credit must be a number!");
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Teacher could not be updated.");
+            JOptionPane.showMessageDialog(null, "Course could not be updated.");
         } 
     }//GEN-LAST:event_UpdateButtonActionPerformed
+
+    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
+        CID.setText("");
+        Name.setText("");
+        Credit.setText("");
+    }//GEN-LAST:event_ClearButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,36 +369,36 @@ public class TeacherFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TeacherFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new CourseFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
-    private javax.swing.JTextField Age;
-    private javax.swing.JLabel AgeLabel;
     private javax.swing.JButton BackButton;
+    private javax.swing.JTextField CID;
+    private javax.swing.JLabel CIDLabel;
     private javax.swing.JButton ClearButton;
+    private javax.swing.JTextField Credit;
+    private javax.swing.JLabel CreditLabel;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JLabel Header;
     private javax.swing.JTextField Name;
     private javax.swing.JLabel NameLabel;
     private javax.swing.JPanel Panel1;
     private javax.swing.JButton SearchButton;
-    private javax.swing.JTextField TID;
-    private javax.swing.JLabel TIDLabel;
     private javax.swing.JTable Table1;
     private javax.swing.JButton UpdateButton;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
-    private void RefreshTable() {
+private void RefreshTable() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/GradeManagement?user=root";
             Connection connect = DriverManager.getConnection(database);
 
             Statement state = connect.createStatement();
-            String query = "SELECT * FROM Teacher";
+            String query = "SELECT * FROM Course";
             ResultSet result = state.executeQuery(query);
 
             DefaultTableModel dm = (DefaultTableModel) Table1.getModel();
@@ -420,11 +409,11 @@ public class TeacherFrame extends javax.swing.JFrame {
             }
 
             while (result.next()) {
-                String id = result.getString("TeacherID");
+                String id = result.getString("CourseID");
                 String name = result.getString("Name");
-                String age = result.getString("Age");
+                String credit = result.getString("Credit");
 
-                Object[] row = {id, name, age};
+                Object[] row = {id, name, credit};
                 dm.addRow(row);
             }
 
@@ -436,5 +425,4 @@ public class TeacherFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Database Error!");
         }
     }
-
 }

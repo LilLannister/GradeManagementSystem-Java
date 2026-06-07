@@ -171,13 +171,13 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="GradesButton" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CoursesButton" min="-2" max="-2" attributes="0"/>
                                       <Component id="StudentsButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="TeachersButton" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CoursesButton" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Gradesutton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -203,8 +203,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="GradesButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="CoursesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Gradesutton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="ReportsButton" min="-2" max="-2" attributes="0"/>
@@ -251,8 +251,11 @@
               <Dimension value="[150, 50]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TeachersButtonActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="CoursesButton">
+        <Component class="javax.swing.JButton" name="Gradesutton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="18" style="1"/>
@@ -263,7 +266,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="GradesButton">
+        <Component class="javax.swing.JButton" name="CoursesButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="18" style="1"/>
@@ -273,6 +276,9 @@
               <Dimension value="[150, 50]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CoursesButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ReportsButton">
           <Properties>

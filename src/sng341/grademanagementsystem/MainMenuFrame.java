@@ -33,8 +33,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
         Label1 = new javax.swing.JLabel();
         StudentsButton = new javax.swing.JButton();
         TeachersButton = new javax.swing.JButton();
+        Gradesutton = new javax.swing.JButton();
         CoursesButton = new javax.swing.JButton();
-        GradesButton = new javax.swing.JButton();
         ReportsButton = new javax.swing.JButton();
         ExitButton = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
@@ -72,14 +72,16 @@ public class MainMenuFrame extends javax.swing.JFrame {
         TeachersButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         TeachersButton.setText("Teachers");
         TeachersButton.setPreferredSize(new java.awt.Dimension(150, 50));
+        TeachersButton.addActionListener(this::TeachersButtonActionPerformed);
+
+        Gradesutton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        Gradesutton.setText("Grades");
+        Gradesutton.setPreferredSize(new java.awt.Dimension(150, 50));
 
         CoursesButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        CoursesButton.setText("Grades");
+        CoursesButton.setText("Courses");
         CoursesButton.setPreferredSize(new java.awt.Dimension(150, 50));
-
-        GradesButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        GradesButton.setText("Courses");
-        GradesButton.setPreferredSize(new java.awt.Dimension(150, 50));
+        CoursesButton.addActionListener(this::CoursesButtonActionPerformed);
 
         ReportsButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         ReportsButton.setText("Reports");
@@ -104,12 +106,12 @@ public class MainMenuFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(GradesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CoursesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(StudentsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TeachersButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CoursesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(Gradesutton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(332, 332, 332)
                         .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -126,8 +128,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
                     .addComponent(StudentsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GradesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CoursesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CoursesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Gradesutton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ReportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
@@ -217,15 +219,21 @@ public class MainMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitMenuItemActionPerformed
 
     private void StudentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsMenuItemActionPerformed
-        // TODO add your handling code here:
+        StudentFrame studentFrame = new StudentFrame();
+        studentFrame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_StudentsMenuItemActionPerformed
 
     private void TeachersMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeachersMenuItemActionPerformed
-        // TODO add your handling code here:
+        TeacherFrame teacherFrame = new TeacherFrame();
+        teacherFrame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_TeachersMenuItemActionPerformed
 
     private void CoursesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoursesMenuItemActionPerformed
-        // TODO add your handling code here:
+        CourseFrame courseFrame = new CourseFrame();
+        courseFrame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_CoursesMenuItemActionPerformed
 
     private void GradesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GradesMenuItemActionPerformed
@@ -233,8 +241,20 @@ public class MainMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_GradesMenuItemActionPerformed
 
     private void CourseWithMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseWithMenuItemActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_CourseWithMenuItemActionPerformed
+
+    private void TeachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeachersButtonActionPerformed
+        TeacherFrame teacherFrame = new TeacherFrame();
+        teacherFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_TeachersButtonActionPerformed
+
+    private void CoursesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoursesButtonActionPerformed
+        CourseFrame courseFrame = new CourseFrame();
+        courseFrame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_CoursesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,8 +290,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton ExitButton;
     private javax.swing.JMenuItem ExitMenuItem;
     private javax.swing.JMenu FileMenuItem;
-    private javax.swing.JButton GradesButton;
     private javax.swing.JMenuItem GradesMenuItem;
+    private javax.swing.JButton Gradesutton;
     private javax.swing.JMenuItem HelpMenuItem;
     private javax.swing.JLabel Label1;
     private javax.swing.JMenu ManageMenuItem;
